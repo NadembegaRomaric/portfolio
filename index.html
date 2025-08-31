@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Cybersécurité - Mon Profil</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') center/cover no-repeat;
+      color: white;
+      height: 79vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      overflow: hidden;
+      margin-bottom: 15px;
+      margin-top:50px
+    }
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .progress {
+      height: 20px;
+      background: #e9ecef;
+    }
+    .progress-bar {
+      width: 0;
+      transition: width 2s;
+    }
+    .project-card {
+      display: none;
+      cursor: pointer;
+    }
+    .counter {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+.scroll-text {
+  max-height: 100px; /* Hauteur visible avant scroll */
+  overflow-y: auto;
+  text-align: justify;
+  padding-right: 5px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Garde les proportions originales */
+}
+
+.card {
+  height: 100%;
+}
+
+
+/* Police plus pro (Roboto ou Poppins par ex.) */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Style des liens navbar */
+.navbar-nav .nav-link {
+  color: #222 !important;       /* Texte plus foncé (presque noir) */
+  font-weight: 600;             /* Texte plus épais */
+  font-size: 1.05rem;           /* Taille légèrement augmentée */
+  letter-spacing: 0.5px;        /* Espacement léger pour aérer */
+  transition: color 0.3s ease;
+}
+
+/* Effet au survol */
+.navbar-nav .nav-link:hover {
+  color: #008080 !important;    /* Bleu Bootstrap au hover */
+}
+
+/* Logo */
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111 !important;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">MON PORTFOLIO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#certificats"> CERTIFICATS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#bugbounty"> CTF</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projets">PROJETS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">COMPETENCES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">CONTACTS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Header -->
+<header>
+  <div class="profile-pic">
+    <img src="r.jpg" alt="Photo de profil">
+  </div>
+  <h1 class="display-5 fw-bold">NADEMBEGA ROMARIC</h1>
+  <p class="lead">Ingénieurs des travaux en réseaux et systèmes informatiques<br> et Etudiant en master en sécurité des systèmes d'informations</p>
+  <p class="lead"></p>
+  <p>Sécurité informatique • Dévéloppement web • Réseaux et systèmes informatiques • Communication digitale</p>
+</header>
+
+
+
+<section id="a-propos" style="background-color:#f4f4f4; padding:50px 20px; font-family:'Segoe UI', sans-serif;">
+  <div style="max-width:1000px; margin:auto; display:flex; flex-wrap:wrap; background:#fff; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.1); overflow:hidden;">
+    
+    <!-- Image à gauche -->
+    <div style="flex:1; min-width:300px; max-width:400px;">
+      <img src="apropos.jpg" alt="Romaric en action" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+
+    <!-- Texte à droite -->
+    <div style="flex:1; padding:30px;">
+      <h2 style="margin-top:0; color:#2c3e50;">IDENTITE ET ENGAGEMENTS</h2>
+      <h4 style="color:#34495e;">Qui suis-je ?</h4>
+      <p style="line-height:1.6; color:#555;">
+        <div class="scroll-text">
+       Je suis passionné par la cybersécurité et les environnements techniques exigeants. Autodidacte rigoureux, j’ai développé des compétences avancées en exploitation binaire , analyse de vulnérabilités et résolution en temps réel.
+
+Mon parcours est rythmé par des compétitions d’éthique hacking , où la précision sous pression forge l’excellence. J’ai également participé à plusieurs compétitions nationales en cybersécurité , où j me suis systématiquement classé parmi les meilleurs , confirmant ainsi mon niveau d’expertise et ma capacité à performer dans des contextes exigeants.
+
+Sur le terrain comme en ligne , je mobilise esprit collectif, discipline et innovation pour sécuriser les systèmes et sensibiliser les communautés. Chaque projet est pour moi un levier d’apprentissage , d’impact et de transmission.
+        </div>
+      </p>
+      <ul style="list-style:none; padding:0; margin-top:20px; color:#333;">
+        <li><strong>Date de naissance :</strong> 11 Novembre 2002 à WA</li>
+        <li><strong>Pays :</strong> Burkina Faso</li>
+        <li><strong>Téléphone :</strong> <a  style="color:#2980b9;">+226 7690 0142 / +226 6058 3287</a></li>
+      </ul>
+
+  <h3 style="color:#2c3e50;">🌐 Langues</h3>
+  <ul style="list-style:none; padding-left:0; font-size:15px;">
+    <li>✅ <strong>Français :</strong> courant</li>
+    <li>✅ <strong>Anglais :</strong> niveau basique</li>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Attestations & Certificats Section -->
+<section id="certificats" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">📜 ATTESTATIONS ET CERTIFICATS</h2>
+    <div class="row g-4">
+      <!-- Exemple de certificat -->
+
+      <div class="col-md-4">
+        <div class="card shadow">
+          <img src="cert1.png" class="card-img-top cert-img" alt="Certificat 1" style="cursor:pointer;">
+          <div class="card-body text-center">
+            <h6 class="card-title">CERTIFICAT DE COMPETENCES</h6>
+            <div class="scroll-text">
+            <p class="card-text"><h8>Attestation de réussite à une formation spécialisée en gestion des opérations de surveillance et de contre-espionnage. </h8></p>
+          </div>
+        </div>
+       </div>
+       </div>
+
+
+
+      <div class="col-md-4">
+        <div class="card shadow">
+          <img src="cert2.jpg" class="card-img-top cert-img" alt="Certificat 2" style="cursor:pointer;">
+          <div class="card-body text-center">
+          <h6 class="card-title">CERTIFICAT DE COMPETENCES</h6>
+          <div class="scroll-text">
+            <p class="card-text"><h8>Certification officielle validant mes compétences en supervision réseau avec Nagios. Elle atteste de ma capacité à déployer, configurer et maintenir des systèmes de monitoring robustes.</h8></p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+     <div class="col-md-4">
+       <div class="card shadow">
+         <img src="cert8.png" class="card-img-top cert-img" alt="Certificat 2" style="cursor:pointer;">
+           <div class="card-body text-center">
+              <h6 class="card-title">CERTIFICAT DE COMPETENCES</h6>
+                <div class="scroll-text">
+                <h8>
+          Formation introductive aux fondamentaux de la cybersécurité : gestion des risques, protection des données, et bonnes pratiques en environnement numérique.<br><br>
+          
+                 </h8>
+      </div>
+    </div>
+  </div>
+ </div>
+
+ <div class="col-md-4">
+  <div class="card shadow">
+    <img src="cert4.jpg" class="card-img-top cert-img" alt="Certificat 2" style="cursor:pointer;">
+    <div class="card-body text-center">
+      <h6 class="card-title">ATTESTATION DE RECONNAISSANCES</h6>
+      <div class="scroll-text">
+        <h8>
+          Reconnaissance de mon engagement actif lors d’une compétition organisée par l’IST et MERADIS BURKINA.<br><br>
+          J'ai été le lauréat du deuxième prix, confirmant ainsi mon niveau d’excellence.
+        </h8>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <div class="card shadow">
+    <img src="cert6.png" class="card-img-top cert-img" alt="Certificat 2" style="cursor:pointer;">
+    <div class="card-body text-center">
+      <h6 class="card-title">CERTIFICAT DE COMPETENCES</h6>
+      <div class="scroll-text">
+        <h8>
+          Certificat obtenu dans le cadre du programme Cisco Networking Academy, validant la maîtrise des principes fondamentaux de la cybersécurité. Ce module, proposé par l’ESTA, atteste de l’engagement de Romaric Nadembega dans une démarche structurée de formation et de professionnalisation en sécurité des systèmes d’information.
+        </h8>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card shadow">
+    <img src="cert5.png" class="card-img-top cert-img" alt="Certificat 2" style="cursor:pointer;">
+    <div class="card-body text-center">
+      <h6 class="card-title">CERTIFICAT DE COMPETENCES</h6>
+      <div class="scroll-text">
+        <h8>
+          Ce document officiel délivré par GSIMEL atteste que Nadembegha Romaric a brillamment complété une formation en "Introduction à la sécurité informatique".<br><br>
+          Formation validée le 18 décembre 2024.
+        </h8>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Projects Section -->
+<section id="projets" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">💻 MES PROJETS</h2>
+    <div class="text-center mb-4">
+      <button class="btn btn-dark filter-btn" data-filter="all">Tous</button>
+      <button class="btn btn-outline-dark filter-btn" data-filter="pentest">Pentest</button>
+      <button class="btn btn-outline-dark filter-btn" data-filter="dev">Développement</button>
+    </div>
+    <div class="row g-4">
+  <div class="col-md-4 project-card pentest">
+    <a href="pdf2.pdf" target="_blank" class="text-decoration-none">
+      <div class="card shadow position-relative">
+        <!-- Petit bandeau en haut à droite -->
+        <span class="badge bg-primary position-absolute top-0 start-50 translate-middle-x m-2">Voir le rapport tèchnique</span>
+        
+        <div class="card-body">
+          <p style="margin-top:20px;">
+          <h5 class="card-title">CHALLENGES</h5>
+          <p>Ce rapport technique synthétise les méthodologies utilisées, les vecteurs d’attaque observés, ainsi que les recommandations de remédiation adaptées au contexte de l’environnement.</p>
+        </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4 project-card dev">
+        <a href="SIEM_Maison.pdf" target="_blank" class="text-decoration-none">
+          <div class="card shadow">
+<a href="N" download class="position-relative d-inline-block text-decoration-none">
+  <span class="badge bg-primary position-absolute top-0 start-50 translate-middle-x m-2">
+  Télécharger le dossier
+</span>
+</a>
+<div class="card-body">
+  <p style="margin-top:20px;">
+    <h5 class="card-title">Challenges techniques</h5>
+    Les épreuves et les solutions proposées de la demi-finale de la compétition nationale Hack To Protect 2025. Il inclut des scénarios réalistes orientés cybersécurité offensive.
+  </p>
+</div>
+
+          </div>
+        
+      </div>
+      <div class="col-md-4 project-card pentest">
+        <a href="pdf1.pdf" target="_blank" class="text-decoration-none">
+          <div class="card shadow">
+            <span class="badge bg-primary position-absolute top-0 start-50 translate-middle-x m-2">Voir le rapport tèchnique</span>
+            <div class="card-body">
+              <p style="margin-top:20px;">
+              <h5 class="card-title">Scénario de pentest</h5>
+              <p>Ce rapport technique documente une série d’exploitations ciblées sur des systèmes Windows 7 et Windows 10, incluant des techniques de prise de contrôle locale, de persistance, et d’exploitation.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="card mt-4" style="border:1px solid #e0e0e0; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.05);">
+  <div class="card-body">
+    <h5 class="card-title text-uppercase text-center">🔍 Projet en phase d’analyse </h5>
+    <p style="margin-top:20px; text-align:justify;">
+      Ce projet vise à analyser les vecteurs d’attaque ciblant les modèles d’intelligence artificielle générative, en mettant particulièrement l’accent sur les architectures de type LLM (Large Language Models). L’objectif est d’identifier les menaces majeures telles que l’injection de prompt, l’empoisonnement de données, l’extraction de modèle ou encore le contournement des restrictions (jailbreak), à travers une cartographie structurée des techniques connues. L’étude s’accompagne de propositions de mécanismes de défense et d’atténuation adaptés aux environnements opérationnels, afin de renforcer la résilience des systèmes face à ces risques émergents.
+    </p>
+  </div>
+</div>
+
+<!-- Bug Bounty Section -->
+<section id="bugbounty" class="py-5">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">🏆 Mes CTF</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+
+      <!-- Major League Cyber -->
+      <div class="col">
+        <div class="card h-100 shadow text-center p-3">
+          <img src="major.png" alt="Major League Cyber Logo" style="width:60px; height:auto;" class="mx-auto mb-2">
+          <h6>Major League Cyber</h6>
+          <div class="counter" data-target="150">0</div>
+        </div>
+      </div>
+
+      <!-- HackTheBox -->
+      <div class="col">
+        <div class="card h-100 shadow text-center p-3">
+          <i class="fa-solid fa-shield-halved fa-2x mb-2"></i>
+          <h6>HackTheBox</h6>
+          <div class="counter" data-target="50">0</div>
+        </div>
+      </div>
+
+      <!-- Kali Linux & Stegano -->
+      <div class="col">
+        <div class="card h-100 shadow text-center p-3">
+          <i class="fa-solid fa-dragon fa-2x mb-2"></i>
+          <h6>Kali Linux & Stéganographie</h6>
+          <div class="counter" data-target="30">0</div>
+        </div>
+      </div>
+
+      <!-- Cisco Badge -->
+      <div class="col">
+        <div class="card h-100 shadow text-center p-3">
+          <a href="https://www.credly.com/badges/1bf30747-383f-433b-8d39-ca94cf664fcb/public_url" target="_blank" style="text-decoration: none; color: inherit;">
+            <img src="badge.png" alt="Badge Cisco Analyste Cybersécurité" style="width:60px; height:auto;" class="mx-auto mb-2">
+            <h6>Badges Cisco Cybersecurity </h6>
+              <p class="mt-2 fw-bold text-success"> Voir le badge</p>
+
+            <div class="counter" data-target="2">0</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+      <!-- Ajoute les autres certificats comme ça -->
+    </div>
+  </div>
+</section>
+
+<!-- Modal pour agrandir l'image -->
+<div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0">
+        <img id="modalImage" src="" class="img-fluid w-100 rounded">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script pour gérer le clic -->
+<script>
+  document.querySelectorAll('.cert-img').forEach(img => {
+    img.addEventListener('click', function() {
+      document.getElementById('modalImage').src = this.src;
+      new bootstrap.Modal(document.getElementById('imgModal')).show();
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+<!-- Skills Section -->
+<section id="skills" class="py-5">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">⚡ COMPÉTENCES CLÉS</h2>
+    <div class="mb-3">
+      <label>Pentest Web</label>
+      <div class="progress"><div class="progress-bar bg-success" data-skill="90"></div></div>
+    </div>
+    <div class="mb-3">
+      <label>Réseaux et Systèmes</label>
+      <div class="progress"><div class="progress-bar bg-info" data-skill="80"></div></div>
+    </div>
+    <div class="mb-3">
+      <label>Développement web et communication digitale </label>
+      <div class="progress"><div class="progress-bar bg-warning" data-skill="70"></div></div>
+    </div>
+    <div class="mb-3">
+      <label>Forensic & Malware</label>
+      <div class="progress"><div class="progress-bar bg-danger" data-skill="60"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5 bg-dark text-white text-center">
+  <div class="container">
+    <h2 class="fw-bold">📩 Me Contacter</h2>
+    <p>Email : <a href="nadembegaromaric11@gmail.com" class="text-white">nadembegaromaric11@gmail.com</a></p>
+    <p>Facebook : <a href="https://www.facebook.com/share/19teCacJDe/?mibextid=wwXIfr" class="text-white">NADEMBEGA Romaric</a></p>
+    <p>LinkedIn : <a href="https://www.linkedin.com/in/romaric-nadembega-8791542a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="text-white">NADEMBEGA Romaric</a></p>
+  </div>
+<p>Whatsapp : <a href="https://wa.me/+22676900142
+" class="text-white">NADEMBEGA Romaric</a></p>
+  </div>
+
+
+</section>
+
+<!-- Bootstrap JS + Script perso -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Compteurs CTF
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 50;
+      const inc = target / 100;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + inc);
+        setTimeout(updateCount, speed);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+
+  // Progress bars animation
+  const progressBars = document.querySelectorAll('.progress-bar');
+  window.addEventListener('scroll', () => {
+    progressBars.forEach(bar => {
+      const value = bar.getAttribute('data-skill');
+      const pos = bar.getBoundingClientRect().top;
+      if (pos < window.innerHeight) {
+        bar.style.width = value + '%';
+      }
+    });
+  });
+
+  // Filtrage projets
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projects = document.querySelectorAll('.project-card');
+  projects.forEach(p => p.style.display = "block"); // afficher au départ
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      projects.forEach(project => {
+        if (filter === "all" || project.classList.contains(filter)) {
+          project.style.display = "block";
+        } else {
+          project.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
