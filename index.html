@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio Cybersécurité - Mon Profil</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Fond bleu ciel clair pour les sections spécifiques - CONTRASTE AUGMENTÉ */
+    .blue-sky-bg {
+      background-color: #d1ecf1 !important; /* Bleu ciel plus prononcé */
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+    }
+    
+    header {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') center/cover no-repeat;
+      color: white;
+      height: 79vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      overflow: hidden;
+      margin-bottom: 15px;
+      margin-top: 50px;
+    }
+    
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Style uniforme pour toutes les cartes avec ombre */
+    .uniform-card {
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .uniform-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      border-color: #008080;
+    }
+    
+    /* Style spécifique pour les cartes de projets */
+    .project-card-custom {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .project-card-custom .card-title {
+      text-align: center;
+      color: #008080 !important; /* Titre en bleu */
+      font-weight: 700;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-card-custom .card-text {
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    .project-card-custom .btn-container {
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .project-card-custom .btn-primary {
+      background-color: #1877F2;
+      border-color:#1877F2;
+      padding: 8px 20px;
+      font-weight: 600;
+    }
+    
+    .project-card-custom .btn-primary:hover {
+      background-color: #006666;
+      border-color: #006666;
+    }
+    
+    /* Style des badges avec couleurs TOUTES EN BLEU */
+    .badge-pentest {
+      background-color:#1877F2 !important;
+      color: white !important;
+    }
+    
+    .badge-dev {
+      background-color: #1877F2 !important; /* BLEU au lieu de jaune */
+      color: white !important; /* BLANC au lieu de #212529 */
+    }
+    
+    .badge-innovation {
+      background-color: #1877F2 !important; /* BLEU au lieu de vert */
+      color: white !important;
+    }
+    
+    /* Conteneur d'image pour certificats - taille augmentée */
+    .cert-img-container {
+      height: 220px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .cert-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-img-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Overlay pour effet zoom */
+    .cert-img-container::after {
+      content: '🔍 Cliquez pour agrandir';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0 0 8px 8px;
+    }
+    
+    .cert-img-container:hover::after {
+      opacity: 1;
+    }
+    
+    /* Conteneur d'image pour section à propos - hauteur limitée */
+    .about-img-container {
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .about-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    
+    .card-text {
+      font-size: 0.9rem;
+      color: #666;
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+    
+    .badge {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Scroll text */
+    .scroll-text {
+      max-height: 100px;
+      overflow-y: auto;
+      text-align: justify;
+      padding-right: 5px;
+      font-size: 0.85rem;
+    }
+    
+    /* Counter style */
+    .counter {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1877F2;
+    }
+    
+    /* Navbar */
+    .navbar-nav .nav-link {
+      color: #222 !important;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #1877F2 !important;
+    }
+    
+    .navbar-brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111 !important;
+    }
+    
+    /* Section titres */
+    .section-title {
+      position: relative;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #333;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #1877F2;
+      border-radius: 2px;
+    }
+    
+    /* Compétences section - Fond blanc inchangé */
+    .skills-section {
+      background: #ffffff !important;
+      padding: 60px 0;
+      color: #333;
+    }
+    
+    .skill-card {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      height: 100%;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      border-color: #1877F2;
+    }
+    
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1877F2 0%, #1877F2 100%);
+      box-shadow: 0 5px 10px rgba(0, 128, 128, 0.2);
+    }
+    
+    .skill-icon i {
+      font-size: 1.8rem;
+      color: white;
+    }
+    
+    .skill-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #008080;
+    }
+    
+    .skill-level {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #008080;
+      margin-bottom: 8px;
+    }
+    
+    .skill-bar-container {
+      height: 6px;
+      background: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .skill-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #1877F2, #1877F2);
+      border-radius: 10px;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+    
+    .skill-tag {
+      background: rgba(0, 128, 128, 0.1);
+      color: #1877F2;
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 0.7rem;
+      border: 1px solid rgba(0, 128, 128, 0.2);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    /* Modal pour images agrandies */
+    .modal-img-container {
+      max-width: 100%;
+      max-height: 80vh;
+      overflow: auto;
+    }
+    
+    .modal-img-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    
+    /* Pied de page amélioré */
+    .footer {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border-top: 3px solid #1877F2;
+    }
+    
+    .footer small {
+      font-size: 0.85rem;
+    }
+    
+    .footer .btn-link {
+      font-size: 0.8rem !important;
+      padding: 2px 5px;
+    }
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .contact-info i {
+      min-width: 20px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .skill-card, .uniform-card {
+        padding: 15px;
+      }
+      
+      .skill-icon {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .skill-icon i {
+        font-size: 1.5rem;
+      }
+      
+      .cert-img-container {
+        height: 180px;
+      }
+      
+      .about-img-container {
+        height: 300px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .cert-img-container {
+        height: 160px;
+      }
+      
+      .about-img-container {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">MON PORTFOLIO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#certificats">CERTIFICATS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#bugbounty">CTF</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projets">PROJETS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">COMPETENCES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">CONTACTS</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<header>
+  <div class="profile-pic">
+    <img src="r.jpg" alt="Photo de profil">
+  </div>
+  <h1 class="display-5 fw-bold">NADEMBEGA ROMARIC</h1>
+  <p class="lead">Ingénieurs des travaux en réseaux et systèmes informatiques<br> et Étudiant en master en sécurité des systèmes d'informations</p>
+  <p>Sécurité informatique • Développement web • Réseaux et systèmes informatiques • Communication digitale</p>
+</header>
+
+<!-- À propos - Image avec hauteur limitée -->
+<section id="a-propos" class="py-5 blue-sky-bg">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <div class="about-img-container">
+          <img src="apropos.jpg" alt="Romaric en action">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h2 class="mb-4">IDENTITÉ ET ENGAGEMENTS</h2>
+        <h4 class="mb-3">Qui suis-je ?</h4>
+        <div class="scroll-text mb-4">
+          <p>Je suis passionné par la cybersécurité et les environnements techniques exigeants. Autodidacte rigoureux, j'ai développé des compétences avancées en exploitation binaire, analyse de vulnérabilités et résolution en temps réel.</p>
+          <p>Mon parcours est rythmé par des compétitions d'éthique hacking, où la précision sous pression forge l'excellence. J'ai également participé à plusieurs compétitions nationales en cybersécurité, où je me suis systématiquement classé parmi les meilleurs, confirmant ainsi mon niveau d'expertise et ma capacité à performer dans des contextes exigeants.</p>
+          <p>Sur le terrain comme en ligne, je mobilise esprit collectif, discipline et innovation pour sécuriser les systèmes et sensibiliser les communautés. Chaque projet est pour moi un levier d'apprentissage, d'impact et de transmission.</p>
+        </div>
+        <ul class="list-unstyled mb-4">
+          <li><strong>Date de naissance :</strong> 11 Novembre 2002 à WA</li>
+          <li><strong>Pays :</strong> Burkina Faso</li>
+          <li><strong>Téléphone :</strong> +226 7690 0142 / +226 6058 3287</li>
+        </ul>
+        <h5 class="mb-3">🌐 Langues</h5>
+        <ul class="list-unstyled">
+          <li>✅ <strong>Français :</strong> courant</li>
+          <li>✅ <strong>Anglais :</strong> niveau basique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Attestations & Certificats Section - Images agrandies -->
+<section id="certificats" class="py-5 blue-sky-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>📜 ATTESTATIONS ET CERTIFICATS</h2>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <!-- Certificat 1 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert9.jpg">
+            <img src="cert9.jpg" alt="Participation JNC 2025">
+          </div>
+          <h6 class="card-title">ATTESTATION DE PARTICIPATION</h6>
+          <div class="scroll-text">
+            <p>Participation au Concours d'Innovation en Cybersécurité dans le cadre de la 3e édition des Journées Nationales de Cybersécurité (JNC 2025) à Bamako, Mali.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert022.jpg">
+            <img src="cert022.jpg" alt="cyberops">
+          </div>
+          <h6 class="card-title">CERTIFICATION CYBEROPS</h6>
+          <div class="scroll-text">
+            <p>Certification Cisco CyberOps Associate (CBROPS) validant mes compétences en analyse des opérations de cybersécurité. Cette certification atteste de ma maîtrise des concepts de sécurité, de la surveillance des réseaux, de la détection des menaces et des procédures de réponse aux incidents.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Certificat 4 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert1.png">
+            <img src="cert1.png" alt="Certificat 1">
+          </div>
+          <h6 class="card-title">CERTIFICAT DE COMPÉTENCES</h6>
+          <div class="scroll-text">
+            <p>Attestation de réussite à une formation spécialisée en gestion des opérations de surveillance et de contre-espionnage.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificat 5 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert2.jpg">
+            <img src="cert2.jpg" alt="Certificat 2">
+          </div>
+          <h6 class="card-title">CERTIFICAT DE COMPÉTENCES</h6>
+          <div class="scroll-text">
+            <p>Certification officielle validant mes compétences en supervision réseau avec Nagios. Elle atteste de ma capacité à déployer, configurer et maintenir des systèmes de monitoring robustes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificat 6 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert8.png">
+            <img src="cert8.png" alt="Certificat 8">
+          </div>
+          <h6 class="card-title">CERTIFICAT DE COMPÉTENCES</h6>
+          <div class="scroll-text">
+            <p>Formation introductive aux fondamentaux de la cybersécurité : gestion des risques, protection des données, et bonnes pratiques en environnement numérique.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificat 7 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert4.jpg">
+            <img src="cert4.jpg" alt="Certificat 4">
+          </div>
+          <h6 class="card-title">ATTESTATION DE RECONNAISSANCE</h6>
+          <div class="scroll-text">
+            <p>Reconnaissance de mon engagement actif lors d'une compétition organisée par l'IST et MERADIS BURKINA. J'ai été le lauréat du deuxième prix.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificat 8 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert6.png">
+            <img src="cert6.png" alt="Certificat 6">
+          </div>
+          <h6 class="card-title">CERTIFICAT DE COMPÉTENCES</h6>
+          <div class="scroll-text">
+            <p>Certificat obtenu dans le cadre du programme Cisco Networking Academy, validant la maîtrise des principes fondamentaux de la cybersécurité.</p>
+          </div>
+        </div>
+      </div>
+
+
+
+  <!-- Attestation Voltaso -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert023.jpg">
+            <img src="cert023.jpg" alt="Attestation de stage Voltaso">
+          </div>
+          <h6 class="card-title">ATTESTATION DE STAGE - VOLTASO</h6>
+          <div class="scroll-text">
+            <p>Attestation de stage chez VOLTASO TECHNOLOGY du 15/08/2023 au 01/10/2023. Stage d'apprentissage en développement web & application sur le thème : conception d'un système web éditeur de CV. Acquisition de connaissances pratiques sur le processus de développement et déploiement d'outils web.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attestation CHU Bogodogo -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert025.jpg">
+            <img src="cert025.jpg" alt="Attestation de stage CHU Bogodogo">
+          </div>
+          <h6 class="card-title">ATTESTATION DE STAGE - CHU BOGODOGO</h6>
+          <div class="scroll-text">
+            <p>Attestation de stage au Centre Hospitalier Universitaire de Bogodogo du 12 janvier au 11 avril 2024. Stage effectué en qualité d'étudiant en Réseaux et Systèmes Informatiques, délivrée par la Direction des Ressources Humaines du CHU-Bogodogo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attestation Hackathon -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="cert024.jpg">
+            <img src="cert024.jpg" alt="Attestation Hackathon Come To Code">
+          </div>
+          <h6 class="card-title">ATTESTATION HACKATHON</h6>
+          <div class="scroll-text">
+            <p>Attestation du 2ème prix  de la 4ème édition du hackathon "Come To Code" du 16 au 18 Juin 2023 à TICANALYSE. Participation sous le thème : "Objets connectés et sécurité territoriale du Burkina Faso".</p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <!-- Certificat 2 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="p1.jpg">
+            <img src="p1.jpg" alt="Campagne d'action nationale">
+          </div>
+          <h6 class="card-title">PRÉSIDENT DU COMITÉ D'ORGANISATION</h6>
+          <div class="scroll-text">
+            <p>Président du Comité d'Organisation pour la Campagne d'Action Nationale "Jeunesse contre la Fraude" organisée par l'Association Be a Leader.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificat 3 -->
+      <div class="col">
+        <div class="uniform-card">
+          <div class="cert-img-container" data-bs-toggle="modal" data-bs-target="#certModal" data-img="p2.jpg">
+            <img src="p2.jpg" alt="Opération Leader Arbre">
+          </div>
+          <h6 class="card-title">RESPONSABLE COMMUNICATION</h6>
+          <div class="scroll-text">
+            <p>Chargé de la communication pour l'opération "Leader Arbre" de l'Association Be a Leader, avec une stratégie de communication efficace ayant contribué au succès de l'événement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projets" class="py-5 blue-sky-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>💻 MES PROJETS</h2>
+    </div>
+    <div class="text-center mb-4">
+      <button class="btn btn-dark filter-btn" data-filter="all">Tous</button>
+      <button class="btn btn-outline-dark filter-btn" data-filter="pentest">Pentest</button>
+      <button class="btn btn-outline-dark filter-btn" data-filter="dev">Développement</button>
+      <button class="btn btn-outline-dark filter-btn" data-filter="innovation">Innovation</button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <!-- Projet 1 - Innovation (CyberLakanani) -->
+      <div class="col project-card innovation">
+        <div class="uniform-card project-card-custom position-relative">
+          <span class="badge badge-innovation position-absolute top-0 start-50 translate-middle-x m-2">Innovation</span>
+          <div class="card-body p-0 d-flex flex-column">
+            <h5 class="card-title">CyberLakanani</h5>
+            <p class="card-text">Plateforme en ligne pour la prévention des arnaques, la protection des plateformes en ligne et la sensibilisation.</p>
+            <div class="btn-container">
+              <a href="pdf3.pdf" target="_blank" class="btn btn-primary">Voir rapport</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 2 - Pentest -->
+      <div class="col project-card pentest">
+        <div class="uniform-card project-card-custom position-relative">
+          <span class="badge badge-pentest position-absolute top-0 start-50 translate-middle-x m-2">Pentest</span>
+          <div class="card-body p-0 d-flex flex-column">
+            <h5 class="card-title">CHALLENGES</h5>
+            <p class="card-text">Rapport technique synthétisant les méthodologies utilisées, les vecteurs d'attaque observés et recommandations de remédiation.</p>
+            <div class="btn-container">
+              <a href="pdf2.pdf" target="_blank" class="btn btn-primary">Voir rapport</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 3 - Développement (AloaBurkina.com) -->
+      <div class="col project-card dev">
+        <div class="uniform-card project-card-custom position-relative">
+          <span class="badge badge-dev position-absolute top-0 start-50 translate-middle-x m-2">Développement</span>
+          <div class="card-body p-0 d-flex flex-column">
+            <h5 class="card-title">AloaBurkina.com</h5>
+            <p class="card-text">Site web développé et déployé pour la promotion des services informatiques et de cybersécurité. Interface responsive avec fonctionnalités modernes.</p>
+            <div class="btn-container">
+              <a href="https://aloaburkina.com" target="_blank" class="btn btn-primary">Visiter le site</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 4 - Pentest -->
+      <div class="col project-card pentest">
+        <div class="uniform-card project-card-custom position-relative">
+          <span class="badge badge-pentest position-absolute top-0 start-50 translate-middle-x m-2">Pentest</span>
+          <div class="card-body p-0 d-flex flex-column">
+            <h5 class="card-title">Scénario de pentest</h5>
+            <p class="card-text">Rapport technique documentant des exploitations ciblées sur systèmes Windows avec techniques de prise de contrôle et persistance.</p>
+            <div class="btn-container">
+              <a href="pdf1.pdf" target="_blank" class="btn btn-primary">Voir rapport</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projet 5 - Innovation (Challenges techniques - déplacé de Développement) -->
+      <div class="col project-card innovation">
+        <div class="uniform-card project-card-custom position-relative">
+          <span class="badge badge-innovation position-absolute top-0 start-50 translate-middle-x m-2">Innovation</span>
+          <div class="card-body p-0 d-flex flex-column">
+            <h5 class="card-title">Challenges techniques</h5>
+            <p class="card-text">Épreuves et solutions de la demi-finale Hack To Protect 2025 avec scénarios réalistes orientés cybersécurité offensive.</p>
+            <div class="btn-container">
+              <a href="N/" target="_blank" class="btn btn-primary">Télécharger</a>
+          
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet en phase d'analyse -->
+    <div class="mt-5">
+      <div class="uniform-card">
+        <div class="card-body">
+          <h5 class="card-title text-center" style="color: #008080;">🔍 Projet en phase d'analyse</h5>
+          <p class="card-text text-justify">
+            Ce projet vise à analyser les vecteurs d'attaque ciblant les modèles d'intelligence artificielle générative, en mettant particulièrement l'accent sur les architectures de type LLM (Large Language Models). L'objectif est d'identifier les menaces majeures telles que l'injection de prompt, l'empoisonnement de données, l'extraction de modèle ou encore le contournement des restrictions (jailbreak), à travers une cartographie structurée des techniques connues.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bug Bounty Section -->
+<section id="bugbounty" class="py-5 blue-sky-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>🏆 Mes CTF</h2>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <!-- CTF 1 -->
+      <div class="col">
+        <div class="uniform-card">
+          <img src="major.png" alt="Major League Cyber Logo" style="width:60px; height:auto;" class="mx-auto mb-2">
+          <h6>Major League Cyber</h6>
+          <div class="counter" data-target="150">0</div>
+        </div>
+      </div>
+
+      <!-- CTF 2 -->
+      <div class="col">
+        <div class="uniform-card">
+          <i class="fa-solid fa-shield-halved fa-2x mb-2"></i>
+          <h6>HackTheBox</h6>
+          <div class="counter" data-target="50">0</div>
+        </div>
+      </div>
+
+      <!-- CTF 3 -->
+      <div class="col">
+        <div class="uniform-card">
+          <i class="fa-solid fa-dragon fa-2x mb-2"></i>
+          <h6>Kali Linux et Stéganographie</h6>
+          <div class="counter" data-target="1100">0</div>
+        </div>
+      </div>
+
+      <!-- CTF 4 -->
+      <div class="col">
+        <a href="https://www.credly.com/badges/1bf30747-383f-433b-8d39-ca94cf664fcb/public_url" target="_blank" class="text-decoration-none">
+          <div class="uniform-card">
+            <img src="badge.png" alt="Badge Cisco Analyste Cybersécurité" style="width:60px; height:auto;" class="mx-auto mb-2">
+            <h6>Badges Cisco Cybersecurity</h6>
+            <p class="text-success fw-bold small">Voir le badge</p>
+            <div class="counter" data-target="2">0</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="https://www.credly.com/badges/792a45f8-77f8-4a3b-94dd-ffae75428557" target="_blank" class="text-decoration-none">
+          <div class="uniform-card">
+            <img src="badge.png" alt="Badge Associé CyberOps" style="width:60px; height:auto;" class="mx-auto mb-2">
+            <h6>Badges Associé CyberOps</h6>
+            <p class="text-success fw-bold small">Voir le badge</p>
+            <div class="counter" data-target="2">0</div>
+          </div>
+        </a>
+      </div>
+
+     <!-- CTF 6 - RootMe -->
+<div class="col">
+  <div class="uniform-card">
+    <img src="root.JPG" alt="RootMe Logo" style="width:190px; height:auto; object-fit: contain;" class="mx-auto mb-2">
+    <h6>RootMe</h6>
+    <div class="counter" data-target="118">0</div>
+  </div>
+</div>
+<!-- Années d'expérience -->
+<div class="col">
+  <div class="uniform-card">
+    <i class="fas fa-briefcase fa-2x mb-2" style="color: #1877F2;"></i>
+    <h6>Expérience</h6>
+    <div class="counter" data-target="27">0</div>
+    <p class="mb-0 small">mois d'expérience</p>
+    <p class="mb-0 small text-muted">(2 ans 3 mois)</p>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- Compétences Section - FOND BLANC INCHANGÉ -->
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>COMPÉTENCES CLÉS</h2>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <!-- Compétence 1 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="skill-title">Pentest</h3>
+          <div class="skill-level">99%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="99"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">OWASP Top 10</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">SQL Injection</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 2 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3 class="skill-title">Réseaux & Systèmes</h3>
+          <div class="skill-level">99%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="99"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Cisco</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Windows Server</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 3 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="skill-title">Développement Web</h3>
+          <div class="skill-level">95%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="95"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">React.js</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 4 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3 class="skill-title">Communication Digitale</h3>
+          <div class="skill-level">90%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="90"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Stratégie Digital</span>
+            <span class="skill-tag">SEO</span>
+            <span class="skill-tag">Réseaux Sociaux</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 5 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="skill-title">Forensic & Malware</h3>
+          <div class="skill-level">99%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="99"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Analyse Malware</span>
+            <span class="skill-tag">Autopsy</span>
+            <span class="skill-tag">Wireshark</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 6 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3 class="skill-title">Sécurité Cloud</h3>
+          <div class="skill-level">60%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="60"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">IAM</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 7 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3 class="skill-title">Cryptographie</h3>
+          <div class="skill-level">99%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="99"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Chiffrement</span>
+            <span class="skill-tag">PKI</span>
+            <span class="skill-tag">TLS/SSL</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Compétence 8 -->
+      <div class="col">
+        <div class="skill-card">
+          <div class="skill-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3 class="skill-title">Gestion de Projet</h3>
+          <div class="skill-level">99%</div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="99"></div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Agile</span>
+            <span class="skill-tag">Scrum</span>
+            <span class="skill-tag">Planification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Section Divers -->
+<section id="divers" class="py-5 blue-sky-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>🌐 DIVERS</h2>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Carte Langues -->
+      <div class="col-lg-4">
+        <div class="uniform-card h-100">
+          <div class="text-center mb-3">
+            <i class="fas fa-language fa-3x mb-3" style="color: #1877F2;"></i>
+            <h4 style="color: #008080;">Langues</h4>
+          </div>
+          
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1">
+              <span><strong>Français</strong></span>
+              <span>98%</span>
+            </div>
+            <div class="progress" style="height: 10px; border-radius: 5px;">
+              <div class="progress-bar" style="width: 98%; background-color: #1877F2;"></div>
+            </div>
+            <p class="small text-muted mt-1">Très Bien</p>
+          </div>
+          
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1">
+              <span><strong>Moré</strong></span>
+              <span>90%</span>
+            </div>
+            <div class="progress" style="height: 10px; border-radius: 5px;">
+              <div class="progress-bar" style="width: 90%; background-color: #1877F2;"></div>
+            </div>
+            <p class="small text-muted mt-1"> Bien</p>
+          </div>
+          
+          <div>
+            <div class="d-flex justify-content-between mb-1">
+              <span><strong>Anglais</strong></span>
+              <span>80%</span>
+            </div>
+            <div class="progress" style="height: 10px; border-radius: 5px;">
+              <div class="progress-bar" style="width: 80%; background-color: #1877F2;"></div>
+            </div>
+            <p class="small text-muted mt-1">En apprentissage</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carte Permis & Formation -->
+      <div class="col-lg-4">
+        <div class="uniform-card h-100">
+          <div class="text-center mb-3">
+            <i class="fas fa-id-card fa-3x mb-3" style="color: #1877F2;"></i>
+            <h4 style="color: #008080;">Permis et Formation</h4>
+          </div>
+          
+          <div class="mb-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle me-3">
+                <i class="fas fa-car" style="color: #1877F2;"></i>
+              </div>
+              <div>
+                <h6 class="mb-1">Permis de conduire</h6>
+                <p class="mb-0"><strong>Catégorie :</strong> C</p>
+                <p class="small text-muted mb-0">Valide</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle me-3">
+                <i class="fas fa-chalkboard-teacher" style="color: #1877F2;"></i>
+              </div>
+              <div>
+                <h6 class="mb-1">Expérience d'enseignement</h6>
+                <p class="mb-0">Transmission de connaissances</p>
+                <p class="small text-muted mb-0">Informatique et cybersécurité</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle me-3">
+                <i class="fas fa-graduation-cap" style="color: #1877F2;"></i>
+              </div>
+              <div>
+                <h6 class="mb-1">Formation entrepreneuriat</h6>
+                <p class="mb-0">Compétences en gestion d'entreprise</p>
+                <p class="small text-muted mb-0">Complétée</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Carte Savoir-être -->
+      <div class="col-lg-4">
+        <div class="uniform-card h-100">
+          <div class="text-center mb-3">
+            <i class="fas fa-user-check fa-3x mb-3" style="color: #1877F2;"></i>
+            <h4 style="color: #008080;">Savoir-être</h4>
+          </div>
+          
+          <div class="row">
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Autonomie</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Adaptation</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Rigueur</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Organisation</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Esprit d'équipe</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Responsabilité</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Curiosité</span>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="soft-skill-item">
+                <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                <span>Pédagogie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Style pour les icônes dans les cercles */
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(24, 119, 242, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Style pour les items de soft skills */
+  .soft-skill-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .soft-skill-item:hover {
+    background-color: rgba(40, 167, 69, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .soft-skill-item i {
+    font-size: 0.9rem;
+  }
+  
+  .soft-skill-item span {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+</style>
+
+
+
+
+
+
+<!-- Footer -->
+<footer id="contact" class="footer pt-5">
+  <div class="container py-4">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-4 text-center text-md-start">
+        <a href="#accueil" class="d-inline-block mb-3">
+          <h4 class="text-white mb-0">NADEMBEGA<span class="text-primary">.</span>Romaric</h4>
+        </a>
+        <p class="mb-0 small text-white-50">Architecte de systèmes sécurisés pour votre transformation digitale.</p>
+      </div>
+      
+      <div class="col-md-4 text-center">
+        <h6 class="text-white mb-3">Contactez-moi</h6>
+        <div class="d-flex flex-column align-items-center mb-3">
+          <div class="contact-info">
+            <i class="fas fa-phone-alt text-primary"></i>
+            <small class="text-white-50">+226 7690 0142</small>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope text-primary"></i>
+            <small class="text-white-50">nadembegaromaric11@gmail.com</small>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center gap-3">
+          <a class="btn btn-outline-light btn-social btn-sm" href="https://www.facebook.com/share/1ZzDJJe5ns/?mibextid=wwXIfr" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social btn-sm" href="https://www.tiktok.com/@romaricnadembega?_r=1&_t=ZM-91yQkl3VIj5" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social btn-sm" href="https://www.linkedin.com/in/romaric-nadembega-8791542a6" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-md-4 text-center text-md-end">
+        <h6 class="text-white mb-2">Liens Rapides</h6>
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-end gap-2">
+          <a class="btn btn-link p-0 small text-white-50" href="#certificats">CERTIFICATS</a>
+          <a class="btn btn-link p-0 small text-white-50" href="#bugbounty">CTF</a>
+          <a class="btn btn-link p-0 small text-white-50" href="#projets">PROJETS</a>
+          <a class="btn btn-link p-0 small text-white-50" href="#skills">COMPETENCES</a>
+          <a class="btn btn-link p-0 small text-white-50" href="#contact">CONTACT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container border-top border-secondary pt-3">
+    <div class="row align-items-center">
+      <div class="col-12 text-center">
+        <p class="mb-0 small text-white-50">
+          &copy; 2025 <a class="text-primary text-decoration-none" href="#accueil">NADEMBEGA Romaric</a> - Tous droits réservés
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal pour images agrandies des certificats -->
+<div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Certificat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="modal-img-container">
+          <img id="certModalImage" src="" alt="Certificat agrandi">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour l'ordre de mission JNC 2025 -->
+<div class="modal fade" id="missionModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ordre de Mission - JNC 2025</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Dans le cadre de la Semaine Nationale du Numérique du Mali, j'ai été sélectionné par l'ANSI, l'ABDI, l'ARCEP et l'ANPTIC pour représenter le Burkina Faso lors de la compétition de hacking.</p>
+        <p>J'ai présenté un projet d'innovation en équipe, avec lequel nous avons remporté le deuxième prix de la compétition.</p>
+        <p>Cette participation témoigne de mon engagement et de ma contribution à la promotion de l'innovation et du développement d'un cyberspace plus sûr, plus collaboratif et plus résilient.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal pour CyberLakanani -->
+<div class="modal fade" id="cyberlakaniModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">CyberLakanani - Plateforme de Sécurité Numérique</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Description du Projet</h6>
+            <p><strong>Nom :</strong> CyberLakanani</p>
+            <p><strong>Type :</strong> Plateforme en ligne pour la prévention des arnaques, la protection des plateformes en ligne et la sensibilisation.</p>
+            <p><strong>Objectif principal :</strong> Renforcer la sécurité des utilisateurs de l'AES via une plateforme accessible et intuitive qui permet de détecter, signaler et prévenir les arnaques numériques, tout en évaluant la fiabilité des applications et services web.</p>
+            
+            <h6 class="mt-4">Objectifs spécifiques</h6>
+            <ul>
+              <li>Permettre aux utilisateurs de tester des URL et vérifier leur sécurité</li>
+              <li>Permettre aux utilisateurs de tester des adresses e-mail pour détecter des risques de compromission ou d'arnaque</li>
+              <li>Offrir un service de signalement d'arnaques et de compromission</li>
+              <li>Fournir des statistiques sur les signalements</li>
+              <li>Offrir un service d'audit pour applications web ou mobiles</li>
+              <li>Chatbot WhatsApp proche des utilisateurs</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h6>Innovations</h6>
+            <ul>
+              <li>Intégration d'un écosystème complet : analyse automatique, signalement communautaire, audit des plateformes en ligne</li>
+              <li>Proximité utilisateur : chatbot WhatsApp pour interaction directe et sensibilisation</li>
+              <li>Badge de confiance numérique pour la valorisation les applications fiables</li>
+              <li>Tableau de bord analytique pour visualiser les statistiques et tendances</li>
+            </ul>
+            
+            <h6 class="mt-4">Technologies utilisées</h6>
+            <ul>
+              <li><strong>Frontend :</strong> React.js</li>
+              <li><strong>Backend :</strong> Python</li>
+              <li><strong>Intelligence Artificielle, Automatisation, Chatbot :</strong> n8n</li>
+              <li><strong>Base de données :</strong> PostgreSQL</li>
+              <li><strong>APIs externes :</strong> Google Safe Browsing, LeakCheck, HaveIBeenPwned, VirusTotal, etc.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#" class="btn btn-primary">Télécharger le rapport complet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS + Script perso -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Compteurs CTF
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 50;
+      const inc = target / 100;
+      if (count < target) {
+        counter.innerText = Math.ceil(count + inc);
+        setTimeout(updateCount, speed);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+
+  // Filtrage projets
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projects = document.querySelectorAll('.project-card');
+  projects.forEach(p => p.style.display = "block"); // afficher au départ
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      projects.forEach(project => {
+        if (filter === "all" || project.classList.contains(filter)) {
+          project.style.display = "block";
+        } else {
+          project.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Animation des barres de compétence
+  document.addEventListener('DOMContentLoaded', function() {
+    const skillBars = document.querySelectorAll('.skill-bar');
+    skillBars.forEach(bar => {
+      const width = bar.getAttribute('data-width');
+      bar.style.width = '0%';
+      
+      setTimeout(() => {
+        bar.style.width = width + '%';
+      }, 500);
+    });
+  });
+
+  // Fonctionnalité pour agrandir les images des certificats
+  document.addEventListener('DOMContentLoaded', function() {
+    const certContainers = document.querySelectorAll('.cert-img-container');
+    const certModal = new bootstrap.Modal(document.getElementById('certModal'));
+    const certModalImage = document.getElementById('certModalImage');
+    
+    certContainers.forEach(container => {
+      container.addEventListener('click', function() {
+        const imgSrc = this.getAttribute('data-img');
+        certModalImage.src = imgSrc;
+        certModalImage.alt = this.querySelector('img').alt;
+        certModal.show();
+      });
+    });
+  });
+</script>
+</body>
+</html>
