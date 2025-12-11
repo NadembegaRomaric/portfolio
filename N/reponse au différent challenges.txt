@@ -1,0 +1,20 @@
+----H2P_13.py----
+ le mot de passe (flag) qui est demandé est :
+ Mr.KABO{flag}
+
+----crack-H2P.exe----
+Mot de passe : 08042023
+
+----Secret.zip----
+Mot de passe : incorrect
+flag : flag{BEST_H2P_2025}
+
+----document_curieux.docx---
+Flag="Mr.K@b0"
+
+----describe----
+
+FLAG{foudre_sur_les_terros!}
+----buff----
+
+FLAG{foudre_sur_les_terros!}
